@@ -1,0 +1,28 @@
+<div class="card me-2">
+    <h5 class="card-header">Login Form</h5>
+    <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="Loginsub()">
+                <div class="col mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && g['email'].errors }" />
+                    <div *ngIf="submitted && g['email'].errors" class="invalid-feedback">
+                        <div *ngIf="g['email'].errors['required']">Email is required</div>
+                        <div *ngIf="g['email'].errors['email']">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && g['password'].errors }" />
+                    <div *ngIf="submitted && g['password'].errors" class="invalid-feedback">
+                        <div *ngIf="g['password'].errors['required']">Password is required</div>
+                        <div *ngIf="g['password'].errors['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary me-2" >Login</button>
+            </div>
+            <p class="text-danger">{{errorMessage}}</p>
+        </form>
+    </div>
+</div>
